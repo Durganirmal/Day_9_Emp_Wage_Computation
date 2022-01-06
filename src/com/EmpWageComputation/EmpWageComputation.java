@@ -9,16 +9,17 @@ public class EmpWageComputation {
     
 	public static void main(String[] args) {
 		System.out.println("Welcome To Employee Wage Computation ");
-		EmployeeWageComp();
+		EmpWageComputation  company1 =new EmpWageComputation( );
+        EmployeeWageComp("Dmart",20,20,100);
+        EmpWageComputation  company2 =new EmpWageComputation( );
+        EmployeeWageComp("Kmart",22,20,70);
+        EmpWageComputation  company3=new EmpWageComputation( );
+        EmployeeWageComp("Bridgelabz",15,2,20);
     }
-    public static void EmployeeWageComp(){
-        int workingDay = 20;
-        int empHrs = 0;
-        int empwage = 0;
-        int totalWage = 0;
-        int totalWorkingHrs = 0;
-        int totalWorkingDays = 0;
-        while (totalWorkingHrs <= MAX_WORKING_HRS && totalWorkingHrs < MAX_WORKING_DAYS) {
+
+    public static int EmployeeWageComp(String company, int empRatePerHr, int numWorkingDays, int maxHrs) {
+        int empHrs = 0, totalEmpHrs = 8, totalWorkingDays = 0;
+        while (totalEmpHrs <= MAX_WORKING_HRS && totalWorkingDays < MAX_WORKING_DAYS) {
             totalWorkingDays++;
             int empcheck = (int) (Math.floor(Math.random() * 10) % 3);
             switch (empcheck) {
@@ -34,13 +35,12 @@ public class EmpWageComputation {
                     System.out.println("Employee is Absent");
                     empHrs = 0;
             }
-            totalWorkingHrs += empHrs;
-            empwage = empHrs * EMP_RATE_PER_HOUR;
-            System.out.println(" Employee Wage = " + empwage);
-            totalWage = totalWage + empwage;
-            System.out.println("Total working hrs = " + totalWorkingHrs);
-            System.out.println("Total Emp wage for 20 days = " + totalWage);
+            totalEmpHrs += empHrs;
+        }
+            int totalEmpWage = totalEmpHrs * EMP_RATE_PER_HOUR;
+            System.out.println(company + " company Total Daily Wage for days " + totalWorkingDays + " and hours " + totalEmpHrs + " is: " + totalEmpWage);
+
+            return totalEmpWage;
         
-	    }
-	}
-}	
+    }
+}
